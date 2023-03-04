@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import VideoCard from './VideoCard';
 
 const VideoContainer = () => {
@@ -10,7 +11,7 @@ const VideoContainer = () => {
   }, []);
   
   const fetchVideos = async () => {
-      const data = await fetch(process.env.REACT_APP_YOUTUBE_API_URLS);
+      const data = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyB4imQd6FOoA9MpsE25hVxwgY_KLungYGQ`);
       const res = await data.json();
       console.log(res.items);
       setVideos(res.items);
@@ -22,7 +23,9 @@ const VideoContainer = () => {
         (videos?.length > 0) && 
          videos.map((video) => {
           return (
-            <VideoCard data={video} />
+            <Link key={video.id} to={`/watch?v=${video.id}`} >
+              <VideoCard data={video} />
+            </Link>
           )
          })
        }
