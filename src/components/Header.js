@@ -2,30 +2,39 @@ import React, { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiSearch } from "react-icons/hi";
 import { CgProfile } from "react-icons/cg";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleSideBar } from '../utils/reducers/appSlice';
+import { cacheResults } from '../utils/reducers/searchSlice';
 
 const Header = () => {
   
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  
+  const searchCache = useSelector((store) => store.search);
+  
+  const dispatch = useDispatch();
 
   useEffect(() => {
 
     // Debouncing Effect
     
     const timer = setTimeout(() => {
-      getSearchSuggestions();
+
+        if(searchCache[searchQuery]){
+          setSuggestions(searchCache[searchQuery]);
+        }
+        else{
+          getSearchSuggestions();
+        }
+
     }, 200);
   
     return () => {
       clearTimeout(timer);
     }
   }, [searchQuery]);
-  
-
-  const dispatch = useDispatch();
 
   const handleSideBar = () => {
     dispatch(toggleSideBar());
@@ -35,6 +44,12 @@ const Header = () => {
       const data = await fetch(`${process.env.REACT_APP_SEARCH_API}${searchQuery}`);
       const res = await data.json();
       setSuggestions(res[1]);
+
+      // Update Cache !!
+
+      dispatch(cacheResults({
+        [searchQuery] : res[1]
+      }));
   }
     
   return (
@@ -52,12 +67,12 @@ const Header = () => {
             </div>
             {
               (searchQuery.length > 0) && (showSuggestions) &&
-              <div className='fixed bg-white w-1/3 m-2 px-2 py-5 rounded-lg font-semibold'>
+              <div className='absolute bg-white w-1/3 m-2 px-2 py-5 rounded-lg font-semibold'>
               <ul>
                 {
-                  suggestions?.length>0 && suggestions.map((suggestion) => {
+                  suggestions?.length>0 && suggestions.map((suggestion,index) => {
                     return (
-                      <li className='p-2 grid grid-flow-col content-center items-center justify-start cursor-pointer hover:bg-gray-300'><div className='col-span-1'><HiSearch size="1.2rem"/></div><div className='px-2 grid-cols-11'> {suggestion} </div> </li>
+                      <li key={index} className='p-2 grid grid-flow-col content-center items-center justify-start cursor-pointer hover:bg-gray-300'><div className='col-span-1'><HiSearch size="1.2rem"/></div><div className='px-2 grid-cols-11'> {suggestion} </div> </li>
                     )
                   })
                 }
