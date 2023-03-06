@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSideBar } from '../utils/reducers/appSlice';
 import { cacheResults } from '../utils/reducers/searchSlice';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   
@@ -72,7 +73,9 @@ const Header = () => {
                 {
                   suggestions?.length>0 && suggestions.map((suggestion,index) => {
                     return (
-                      <li key={index} className='p-2 grid grid-flow-col content-center items-center justify-start cursor-pointer hover:bg-gray-300'><div className='col-span-1'><HiSearch size="1.2rem"/></div><div className='px-2 grid-cols-11'> {suggestion} </div> </li>
+                      <a href={`https://www.youtube.com/results?search_query=${suggestion}`} key={index}> 
+                      <li  className='p-2 grid grid-flow-col content-center items-center justify-start cursor-pointer hover:bg-gray-300'><div className='col-span-1'><HiSearch size="1.2rem"/></div><div className='px-2 grid-cols-11'> {suggestion} </div> </li>
+                      </a>
                     )
                   })
                 }
