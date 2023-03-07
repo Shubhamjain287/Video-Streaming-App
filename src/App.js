@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Body from './components/Body';
 import Header from './components/Header';
+import Hooks from './components/Hooks';
 import MainContainer from './components/MainContainer';
 import SearchResults from './components/SearchResults';
 import WatchPage from './components/WatchPage';
@@ -22,8 +23,12 @@ const appRouter = createBrowserRouter([
         element: <WatchPage />,
       },
       {
-        path : "/results",
-        element: <SearchResults />
+        path: "/results",
+        element: <SearchResults />,
+      },
+      {
+        path : "/hooks",
+        element: <Hooks />
       }
     ]
   }
@@ -32,7 +37,6 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-        <Header />
         <RouterProvider router={appRouter} />
     </Provider>
   );

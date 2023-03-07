@@ -15,6 +15,7 @@ const SideBar = () => {
     <div className='col-span-1 shadow-lg p-5'>
       <ul className='mt-4'>
         <Link to="/"> Home </Link>
+        <li><Link to="/hooks"> Hooks </Link></li>
         <li> Shorts </li>
         <li> Subscriptions </li>
       </ul>

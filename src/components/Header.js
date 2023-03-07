@@ -59,23 +59,25 @@ const Header = () => {
             <div className='mx-2 cursor-pointer'>
                 <GiHamburgerMenu size="1.5rem" onClick={handleSideBar}/>
             </div>
+            <Link to="/">
             <img className='h-6 mx-2' src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Youtube-logo" />
+            </Link>
         </div>
         <div className='col-span-10 px-10'>
             <div className='flex '>
-              <input className="border border-gray-400 rounded-l-full w-1/2 p-2 placeholder:px-2" type="text" onChange={(e) => setSearchQuery(e.target.value)} onFocus={() => setShowSuggestions(true)} onBlur={()=> setShowSuggestions(false)} placeholder="Search Video" />
+              <input className="border border-gray-400 rounded-l-full w-1/2 p-2 placeholder:px-2" type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onFocus={() => setShowSuggestions(true)} placeholder="Search Video" />
               <button className="border border-gray-400 rounded-r-full p-3 bg-gray-300" > <HiSearch size="1.2rem"/> </button>
             </div>
             {
               (searchQuery.length > 0) && (showSuggestions) &&
-              <div className='absolute bg-white w-1/3 m-2 px-2 py-5 rounded-lg font-semibold'>
+              <div className='absolute bg-white w-1/3 m-2 px-2 py-5 rounded-lg font-semibold' onBlur={()=> setShowSuggestions(false)} >
               <ul>
                 {
-                  suggestions?.length>0 && suggestions.map((suggestion,index) => {
+                  showSuggestions && suggestions.map((suggestion,index) => {
                     return (
-                      <a href={`https://www.youtube.com/results?search_query=${suggestion}`} key={index}> 
-                      <li  className='p-2 grid grid-flow-col content-center items-center justify-start cursor-pointer hover:bg-gray-300'><div className='col-span-1'><HiSearch size="1.2rem"/></div><div className='px-2 grid-cols-11'> {suggestion} </div> </li>
-                      </a>
+                        <Link to={`/results?search_query=${suggestion}`} key={index} onClick={()=> setSearchQuery(suggestion)} > 
+                        <li className='p-2 grid grid-flow-col content-center items-center justify-start cursor-pointer hover:bg-gray-300'><div className='col-span-1'><HiSearch size="1.2rem"/></div><div className='px-2 grid-cols-11'> {suggestion} </div> </li>
+                        </Link>
                     )
                   })
                 }

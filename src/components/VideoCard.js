@@ -6,10 +6,10 @@ const VideoCard = ({data}) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className='p-2 m-2 w-64 shadow-xl'>
+    <div className='p-2 m-2 w-72 shadow-xl'>
         <img className='rounded-lg' alt='Video-thumbnail' src={thumbnails?.medium?.url} />
         <ul className='p-2'>
-            <li className='font-bold '> {title}  </li>
+            <li className='font-bold '> {title.substr(0,50) + "..."}  </li>
             <li className='my-1'> {channelTitle}  </li>
             <li> {statistics.viewCount} Views  </li>
         </ul>
