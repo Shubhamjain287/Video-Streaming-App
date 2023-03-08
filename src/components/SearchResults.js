@@ -25,10 +25,10 @@ const SearchResults = () => {
   };
 
   return (
-    <div className="col-span-11">
+    <div className="mx-28 col-span-11">
       <h1 className="font-bold m-5 p-5 text-3xl"> Search Results </h1>
       <div>
-        <div className="flex flex-wrap m-2 p-2">
+        <div className="flex flex-wrap flex-col m-2 p-2">
           {/* {videos[0] && <AdVideoCard data={videos[0]} />}
           
            */}
@@ -36,12 +36,12 @@ const SearchResults = () => {
             videos.map((video) => {
               return (
                   <Link key={video.id.videoId} to={`/watch?v=${video.id.videoId}`}>
-                  <div className='p-2 m-2 w-72 shadow-xl'>
-                  <img className='rounded-lg' alt='Video-thumbnail' src={video.snippet.thumbnails?.medium?.url} />
-                      <ul className='p-2'>
-                          <li className='font-bold '> {video.snippet.title.substr(0,50) + "..."}  </li>
-                          <li className='my-1'> {video.snippet.description}  </li>
-                          <li className='my-1'> {video.snippet.channelTitle}  </li>
+                  <div className='flex flex-row p-2 m-2 w-full shadow-xl'>
+                  <img className='rounded-2xl w-[320px] h-[202px]' alt='Video-thumbnail' src={video.snippet.thumbnails?.medium?.url} />
+                      <ul className='px-4'>
+                          <li className='font-bold text-xl'> {video.snippet.title}  </li>
+                          <li className='my-1 text-sm font-semibold'> {video.snippet.channelTitle}  </li>
+                          <li className='my-1 text-base'> {video.snippet.description}  </li>
                       </ul>
                   </div>
                   </Link>
