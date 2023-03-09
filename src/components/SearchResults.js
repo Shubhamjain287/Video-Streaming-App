@@ -39,9 +39,9 @@ const SearchResults = () => {
                   <div className='flex flex-row p-2 m-2 w-full shadow-xl'>
                   <img className='rounded-2xl w-[320px] h-[202px]' alt='Video-thumbnail' src={video.snippet.thumbnails?.medium?.url} />
                       <ul className='px-4'>
-                          <li className='font-bold text-xl'> {video.snippet.title}  </li>
-                          <li className='my-1 text-sm font-semibold'> {video.snippet.channelTitle}  </li>
-                          <li className='my-1 text-base'> {video.snippet.description}  </li>
+                          <li className='font-bold text-xl my-2'> {video.snippet.title}  </li>
+                          <li className='my-2 text-sm font-semibold'> {video.snippet.channelTitle}  </li>
+                          <li className='my-2 text-base'> {video.snippet.description}  </li>
                       </ul>
                   </div>
                   </Link>

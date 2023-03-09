@@ -29,7 +29,7 @@ const SideBar = () => {
   }
 
   return (
-    <div className="col-span-1 shadow-lg p-5">
+    <div className="col-span-1 shadow-lg p-4">
       <ul className="mt-4">
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
           <AiOutlineHome className="mx-2" size="1.4rem" />
@@ -52,14 +52,13 @@ const SideBar = () => {
       <h1 className="font-semibold mt-4 text-lg"> Subscription </h1>
       <ul>
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
-          {" "}
-          <MdImage className="mx-1" size="1.2rem" /> Shubham Jain
+          <MdImage className="mx-2" size="1.2rem" /> Shubham Jain
         </li>
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
-          <MdImage className="mx-1" size="1.2rem" /> Sakshi Raghuwanshi
+          <MdImage className="mx-2" size="1.2rem" /> Sakshi
         </li>
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
-          <MdImage className="mx-1" size="1.2rem" /> Yash Sharma
+          <MdImage className="mx-2" size="1.2rem" /> Yash Sharma
         </li>
       </ul>
       <h1 className="font-semibold mt-4 text-lg"> Explore </h1>
@@ -70,7 +69,7 @@ const SideBar = () => {
               return (
                 <li key={index} className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
                   <Icon className="mx-2" size="1.4rem" />
-                  <Link to="/"> {name} </Link>
+                  <Link to={`/results?search_query=${name}`} > {name} </Link>
                 </li>
               )
           })
