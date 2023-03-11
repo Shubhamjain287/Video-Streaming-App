@@ -45,7 +45,7 @@ const SideBar = () => {
         </li>
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
           <GiHook className="mx-2" size="1.4rem" />
-          <Link to="/"> Hooks </Link>
+          <Link to="/hooks"> Hooks </Link>
         </li>
       </ul>
       <hr />
@@ -55,10 +55,10 @@ const SideBar = () => {
           <MdImage className="mx-2" size="1.2rem" /> Shubham Jain
         </li>
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
-          <MdImage className="mx-2" size="1.2rem" /> Sakshi
+          <MdImage className="mx-2" size="1.2rem" /> Yash Sharma
         </li>
         <li className="flex items-center m-2 p-2 font-semibold hover:bg-gray-300 rounded-lg">
-          <MdImage className="mx-2" size="1.2rem" /> Yash Sharma
+          <MdImage className="mx-2" size="1.2rem" /> Sakshi
         </li>
       </ul>
       <h1 className="font-semibold mt-4 text-lg"> Explore </h1>

@@ -32,7 +32,7 @@ const WatchPage = () => {
         <div className='m-4 flex flex-row overflow-auto'>
             <div className='flex flex-col'>
               <iframe width="1000" height="500" src={`https://www.youtube.com/embed/${videoId}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-              <div className='my-4 border border-black py-4 px-2 rounded-xl'>
+              <div className='my-4 border border-black py-4 px-2 rounded-xl bg-gray-300'>
                 <ul>
                   <li className='font-bold text-xl'> {video?.title} </li>
                   <li className=''> {video?.channelTitle} </li>
